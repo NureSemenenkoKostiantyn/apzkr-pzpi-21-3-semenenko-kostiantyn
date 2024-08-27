@@ -19,7 +19,7 @@ import { config } from 'process';
       }),
     }),
     LoggerModule,
-    ClientsModule.registerAsync([
+    ClientsModule.registerAsync([ // Client for notifications service TCP connection
       {
         name: NOTIFICATIONS_SERVICE,
         useFactory: (configService: ConfigService) => ({
