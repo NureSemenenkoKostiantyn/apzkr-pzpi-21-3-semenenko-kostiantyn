@@ -1,0 +1,61 @@
+services:
+  dogs:
+    build:
+      context: .
+      dockerfile: ./apps/dogs/Dockerfile
+      target: development
+    command: pnpm run start:dev dogs
+    env_file:
+      - ./apps/dogs/.env
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+  matches:
+    build:
+      context: .
+      dockerfile: ./apps/matches/Dockerfile
+      target: development
+    command: pnpm run start:dev matches
+    env_file:
+      - ./apps/matches/.env
+    ports:
+      - 3010:3010
+    volumes:
+      - .:/usr/src/app
+  payments:
+    build:
+      context: .
+      dockerfile: ./apps/payments/Dockerfile
+      target: development
+    command: pnpm run start:dev payments
+    env_file:
+      - ./apps/payments/.env
+    volumes:
+      - .:/usr/src/app
+  notifications:
+    build:
+      context: .
+      dockerfile: ./apps/notifications/Dockerfile
+      target: development
+    command: pnpm run start:dev notifications
+    env_file:
+      - ./apps/notifications/.env
+    volumes:
+      - .:/usr/src/app
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: pnpm run start:dev auth
+    env_file:
+      - ./apps/auth/.env
+    ports:
+      - 3001:3001
+    volumes:
+      - .:/usr/src/app
+  mongo:
+    image: mongo
+    ports:
+      - 27018:27017
